@@ -41,7 +41,7 @@ footer {
 </head>
 <body>
 <div class="topnav">
-  <a class="active" href="#home">Home</a>
+  <a class="active" href="home.jsp">Home</a>
   <a href="#howtoplay">How to play</a>
   <a href="#about">About</a>
 </div>

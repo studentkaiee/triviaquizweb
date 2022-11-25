@@ -83,5 +83,6 @@ footer {
   <p><a class="active" href="#home">Home</a> | 
   <a href="#howtoplay">How to play</a> | 
   <a href="#about">About</a></p>
+
 </body>
 </html>

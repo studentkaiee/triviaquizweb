@@ -55,7 +55,7 @@ footer {
 	<!-- Login Form Panel Start -->
 	<div>Login Here</div>
 	<div style="height: 20px;"></div>
-	<form>
+	<form action="LoginServlet" method="post">
 	<div class="column">
 		username:
 		<div style="height: 2px;"></div>
@@ -65,7 +65,7 @@ footer {
 		<div style="height: 2px;"></div>
 		<input type="text" name="password" size="20">
 		<div style="height: 10px;"></div>
-		<input type="submit"/>
+		<input type="submit" value="Login"/>
 	</div>
 	</form>
 	<!-- Login Form Panel End -->

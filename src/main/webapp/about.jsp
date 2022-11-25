@@ -32,46 +32,42 @@ footer {
   background-color: gray;
   color: black;
 }
-.butt {
-	box-shadow:inset 0px 1px 0px 0px #fce2c1;
-	background:linear-gradient(to bottom, #ffc477 5%, #fb9e25 100%);
-	background-color:#ffc477;
-	border-radius:11px;
-	border:2px solid #eeb44f;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:16px;
-	font-weight:bold;
-	padding:8px 18px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #cc9f52;
-}
-.butt:hover {
-	background:linear-gradient(to bottom, #fb9e25 5%, #ffc477 100%);
-	background-color:#fb9e25;
-}
-.butt:active {
-	position:relative;
-	top:1px;
-}
+.About-us {
+	  width: 500px;
+	  text-align: center;
+	}
 </style>
-<title>Insert title here</title>
+<title>Trivia Quiz</title>
 </head>
 <body>
 <div class="topnav">
-  <a class="active" href="home.jsp">Home</a>
+  <a href="home.jsp">Home</a>
   <a href="#howtoplay">How to play</a>
-  <a href="about.jsp">About</a>
+  <a class="active" href="about.jsp">About</a>
 </div>
-<div class="column">
-<div style="height: 250px"></div>
-<div class="container" style="text-align: center">
-<p><a href="#quiz" class="butt">Start Quiz</a></p>
-<p><a href="#howtoplay" class="butt">How to Play</a></p>
+
+<div class="row">
+	<div style="width: 530px;"></div>
+	
+	<div class="column">
+	<div style="height: 150px;"></div>
+	
+	  <div class="About-us">
+    <h1> About Us </h1>
+	<img src="http://www.getknowapp.com/blog/wp-content/uploads/2020/11/%E2%80%94Pngtree%E2%80%94bulb-icon-vector-bulb-ideas_4979106-scaled.jpg"
+	width="250"
+	height="250"/>
+	<p>Simple Trivia Quiz For All Ages</p>
+	<hr>
+	<p>Created by 4 Polytechnic Students. Made for users to play engaging quiz based-games and challenge themselves in different topics such as sports, music and movies. Trivia Quiz will rotate weekly in batches of 4 types with varying topics and will be designed by us.</p>
+	<p>Users will be able to compete with one another through total scores that will be published at the end of the week.</p>
+	
+
+  </div>
+	</div>
+
 </div>
-</div>
+
 <!-- distance between login form and footer -->
 <div style="height: 200px"></div>
 
@@ -79,6 +75,6 @@ footer {
   <p><a class="active" href="#home">Home</a> | 
   <a href="#howtoplay">How to play</a> | 
   <a href="#about">About</a></p>
-  </footer>
+</footer>
 </body>
 </html>

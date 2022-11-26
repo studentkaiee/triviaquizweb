@@ -29,7 +29,6 @@
 footer {
   text-align: center;
   padding: 3px;
-  background-color: gray;
   color: black;
 }
 .About-us {

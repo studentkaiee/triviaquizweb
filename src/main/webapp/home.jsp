@@ -69,13 +69,28 @@ footer {
   <a href="#howtoplay">How to play</a>
   <a href="#about">About</a>
 </div>
+
 <div class="column">
 <div style="height: 250px"></div>
-<div class="container" style="text-align: center">
+<div class="row">
+<div style="width: 450px"></div>
+<div>
+<div>Logged in as: John Doe</div>
+<div>Highest Score: 17/20</div>
+<!-- redirects to login page -->
+<button onclick="window.location='index.jsp'">Log Out</button>
+</div>
+
+<div style="width: 130px"></div>
+
+<div>
 <p><a href="#quiz" class="butt">Start Quiz</a></p>
 <p><a href="#howtoplay" class="butt">How to Play</a></p>
 </div>
+
 </div>
+</div>
+
 <!-- distance between login form and footer -->
 <div style="height: 200px"></div>
 
@@ -83,6 +98,7 @@ footer {
   <p><a class="active" href="#home">Home</a> | 
   <a href="#howtoplay">How to play</a> | 
   <a href="#about">About</a></p>
+ </footer>
 
 </body>
 </html>

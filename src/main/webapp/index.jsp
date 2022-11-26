@@ -33,7 +33,6 @@
 footer {
   text-align: center;
   padding: 3px;
-  background-color: gray;
   color: black;
 }
 .butt {
@@ -84,7 +83,7 @@ footer {
 <div style="width: 130px"></div>
 
 <div>
-<p><a href="#quiz" class="butt">Start Quiz</a></p>
+<p><a href="quiz.jsp" class="butt">Start Quiz</a></p>
 <p><a href="#howtoplay" class="butt">How to Play</a></p>
 </div>
 

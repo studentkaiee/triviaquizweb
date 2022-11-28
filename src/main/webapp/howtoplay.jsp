@@ -30,11 +30,11 @@
   color: white;
 }
 
-footer {
-  text-align: center;
-  padding: 3px;
-  color: black;
-}
+.How-to-play {
+	  width: 500px;
+	  text-align: center;
+	}
+	
 .butt {
 	box-shadow:inset 0px 1px 0px 0px #fce2c1;
 	background:linear-gradient(to bottom, #ffc477 5%, #fb9e25 100%);
@@ -59,34 +59,36 @@ footer {
 	position:relative;
 	top:1px;
 }
+
+
+footer {
+  text-align: center;
+  padding: 3px;
+  color: black;
+}
 </style>
-<title>Insert title here</title>
+<title>Trivia Quiz</title>
 </head>
 <body>
 <div class="topnav">
-  <a class="active" href="home.jsp">Home</a>
-  <a href="howtoplay.jsp">How to play</a>
+  <a class="active" href="index.jsp">Home</a>
+  <a href="#howtoplay">How to play</a>
   <a href="#about">About</a>
 </div>
 
-<div class="column">
-<div style="height: 250px"></div>
 <div class="row">
-<div style="width: 450px"></div>
-<div>
-<div>Logged in as: John Doe</div>
-<div>Highest Score: 17/20</div>
-<!-- redirects to login page -->
-<button onclick="window.location='index.jsp'">Log Out</button>
+	<div style="width: 380px;"></div>
+	
+	<div class="column">
+	<div style="height: 50px;"></div>
+<div class="How-to-play">
+<img src="https://cdn-icons-png.flaticon.com/512/5184/5184592.png" width=250px height=250px>
+<h1>How To Play</h1>
+<p>You will encounter a series of trivia questions. Do not cheat by googling the answers. Attempt the quiz to the best of your ability and see how knowledgeable you are!</p>
+
+<p><a href="index.jsp" class="butt">Go Back</a></p>
+
 </div>
-
-<div style="width: 130px"></div>
-
-<div>
-<p><a href="quiz.jsp" class="butt">Start Quiz</a></p>
-<p><a href="#howtoplay" class="butt">How to Play</a></p>
-</div>
-
 </div>
 </div>
 
@@ -95,9 +97,8 @@ footer {
 
 <footer>
   <p><a class="active" href="#home">Home</a> | 
-  <a href="howtoplay.jsp">How to play</a> | 
-  <a href="about.jsp">About</a></p>
- </footer>
-
+  <a href="#howtoplay">How to play</a> | 
+  <a href="#about">About</a></p>
+</footer>
 </body>
 </html>

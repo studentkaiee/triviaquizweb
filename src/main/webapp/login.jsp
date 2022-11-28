@@ -31,7 +31,7 @@
 }
 
 footer {
-  text-align: center;
+text-align: center;
   padding: 3px;
   color: black;
 }
@@ -40,7 +40,7 @@ footer {
 </head>
 <body>
 <div class="topnav">
-  <a class="active" href="home.jsp">Home</a>
+  <a class="active" href="#index">Home</a>
   <a href="#howtoplay">How to play</a>
   <a href="#about">About</a>
 </div>
@@ -52,7 +52,7 @@ footer {
 	<div style="height: 220px;"></div>
 	
 	<!-- Login Form Panel Start -->
-	<div>Login Here</div>
+	<div>Login Here</div>	
 	<div style="height: 20px;"></div>
 	<form action="LoginServlet" method="post">
 	<div class="column">
@@ -67,6 +67,7 @@ footer {
 		<input type="submit" value="Login"/>
 	</div>
 	</form>
+		<p>Dont Have an Account? <a href="register.jsp">Register Here</a></p>
 	<!-- Login Form Panel End -->
 	</div>
 

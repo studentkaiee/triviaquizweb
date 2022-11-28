@@ -64,9 +64,9 @@ footer {
 </head>
 <body>
 <div class="topnav">
-  <a class="active" href="home.jsp">Home</a>
-  <a href="#howtoplay">How to play</a>
-  <a href="#about">About</a>
+  <a class="active" href="#home">Home</a>
+  <a href="howtoplay.jsp">How to play</a>
+  <a href="about.jsp">About</a>
 </div>
 
 <div class="column">
@@ -77,14 +77,14 @@ footer {
 <div>Logged in as: John Doe</div>
 <div>Highest Score: 17/20</div>
 <!-- redirects to login page -->
-<button onclick="window.location='index.jsp'">Log Out</button>
+<button onclick="window.location='login.jsp'">Log Out</button>
 </div>
 
 <div style="width: 130px"></div>
 
 <div>
 <p><a href="quiz.jsp" class="butt">Start Quiz</a></p>
-<p><a href="#howtoplay" class="butt">How to Play</a></p>
+<p><a href="howtoplay.jsp" class="butt">How to Play</a></p>
 </div>
 
 </div>

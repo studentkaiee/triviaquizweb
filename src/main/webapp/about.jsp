@@ -40,8 +40,8 @@ footer {
 </head>
 <body>
 <div class="topnav">
-  <a href="home.jsp">Home</a>
-  <a href="#howtoplay">How to play</a>
+  <a href="index.jsp">Home</a>
+  <a href="howtoplay.jsp">How to play</a>
   <a class="active" href="about.jsp">About</a>
 </div>
 
@@ -71,9 +71,9 @@ footer {
 <div style="height: 200px"></div>
 
 <footer>
-  <p><a class="active" href="#home">Home</a> | 
-  <a href="#howtoplay">How to play</a> | 
-  <a href="#about">About</a></p>
+  <p><a class="active" href="index.jsp">Home</a> | 
+  <a href="howtoplay.jsp">How to play</a> | 
+  <a href="about.jsp">About</a></p>
 </footer>
 </body>
 </html>

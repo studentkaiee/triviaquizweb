@@ -31,7 +31,7 @@
 }
 
 footer {
-text-align: center;
+  text-align: center;
   padding: 3px;
   color: black;
 }
@@ -47,38 +47,32 @@ text-align: center;
 
 <div class="row">
 	<div style="width: 660px;"></div>
-
+	
 	<div class="column">
-	<div style="height: 160px;"></div>
-
-	<div style="font-size:25px">Register</div>
+	<div style="height: 220px;"></div>
+	
+	<!-- Login Form Panel Start -->
+	<div>Forget Password Form</div>
 	<div style="height: 20px;"></div>
-	<form action="RegisterServlet" method="post">
+	<form action="ForgetPasswordServlet" method="post">
 	<div class="column">
-		Username:
+		New password:
 		<div style="height: 2px;"></div>
-		<input type="text" name="username" size="30">
+		<input type="text" name="password" size="20">
 		<div style="height: 5px;"></div>
-		Email:
+		Confirm new password:
 		<div style="height: 2px;"></div>
-		<input type="text" name="password" size="30">
+		<input type="text" name="password" size="20">
 		<div style="height: 10px;"></div>
-		Full name:
-		<div style="height: 2px;"></div>
-		<input type="text" name="username" size="30">
-		<div style="height: 5px;"></div>
-		Password:
-		<div style="height: 2px;"></div>
-		<input type="text" name="username" size="30">   
-		<div style="height: 5px;"></div>
-		<input type="submit" value="Register"/>
-		
+		<input type="submit" value="ForgetPassword"/>
 	</div>
 	</form>
-	<p>Already Have an Account? <a href="login.jsp">Login Here</a></p>
+	<!-- Login Form Panel End -->
 	</div>
 
 </div>
+
+<!-- distance between login form and footer -->
 <div style="height: 200px"></div>
 
 <footer>

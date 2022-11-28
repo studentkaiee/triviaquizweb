@@ -134,7 +134,7 @@ input[type="radio"] {
 			</ul>
 		</li>
 	</ul>
-	<button class="view-results" onclick="returnScore()">View
+	<button class="view-results" onclick="window.location='quizresults.jsp'">View
 		Results</button>
 	<span id="myresults" class="my-results">My results will appear
 		here</span>

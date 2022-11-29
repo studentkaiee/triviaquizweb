@@ -67,7 +67,8 @@ text-align: center;
 		<input type="submit" value="Login"/>
 	</div>
 	</form>
-		<p>Dont Have an Account? <a href="register.jsp">Register Here</a></p>
+		<p>Don't Have an Account? <a href="register.jsp">Register Here</a></p>
+		<p>Forgotten your Password? <a href="forgetpassword.jsp">Click Here</a></p>
 	<!-- Login Form Panel End -->
 	</div>
 

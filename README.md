@@ -1,3 +1,4 @@
 # TriviaQuizWeb
 
 Trivia Quiz Web is a web apllication built by 4 student in TP for their group project for a module called DEVOPS. The project is built using JS and Serevlets. It is a quiz website where users can create their own quizes and other users can participate in the quiz as well. Users will be able to create and sign in to their accounts. The quiz will also store data about who has the highest score and what was the highest score.
+  User who wish to try out the code can download it and run it on their local web server.Users who need help with the project can email 2102833G@student.tp.edu.sg for more help. Users who wish to contribute to the project can do so by requesting access and cloning the release branch. Any merges will be handled by the 4 branch owners and only the code owner can merge to master. 

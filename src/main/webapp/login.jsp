@@ -62,7 +62,7 @@ text-align: center;
 		<div style="height: 5px;"></div>
 		password:
 		<div style="height: 2px;"></div>
-		<input type="text" name="password" size="20">
+		<input type="password" name="password" size="20">
 		<div style="height: 10px;"></div>
 		<input type="submit" value="Login"/>
 	</div>

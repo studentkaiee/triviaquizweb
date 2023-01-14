@@ -61,15 +61,11 @@ text-align: center;
 		<div style="height: 5px;"></div>
 		Email:
 		<div style="height: 2px;"></div>
-		<input type="text" name="password" size="30">
+		<input type="text" name="email" size="30">
 		<div style="height: 10px;"></div>
-		Full name:
-		<div style="height: 2px;"></div>
-		<input type="text" name="username" size="30">
-		<div style="height: 5px;"></div>
 		Password:
 		<div style="height: 2px;"></div>
-		<input type="text" name="username" size="30">   
+		<input type="password" name="password" size="30">   
 		<div style="height: 5px;"></div>
 		<input type="submit" value="Register"/>
 		

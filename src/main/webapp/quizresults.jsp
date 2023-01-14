@@ -90,8 +90,99 @@ body {
 	<img src="https://www.poornima.edu.in/wp-content/uploads/2020/08/greentick.jpg"
 	width="230"
 	height="230"/>
-	<p>Current Score : 15/20</p>
-	<div>Highest Score : 17/20</div>
+	<%@ page import="com.dvops.maven.eclipse.testSheet" %>
+<% 
+	String[][] answerOrder = testSheet.answerOrder;
+
+	String[] correctAnswerOrder = testSheet.correctAnswerOrder;
+
+	String question0 = request.getParameter("question0"); //0,1,2,3,null
+	String question1 = request.getParameter("question1");
+	String question2 = request.getParameter("question2");
+	String question3 = request.getParameter("question3");
+	String question4 = request.getParameter("question4");
+	String question5 = request.getParameter("question5");
+	String question6 = request.getParameter("question6");
+	String question7 = request.getParameter("question7");
+	String question8 = request.getParameter("question8");
+	String question9 = request.getParameter("question9");
+	
+	String question0a = "";
+	if (question0 != null){
+		question0a = answerOrder[0][Integer.parseInt(question0)];
+	}
+	String question1a = "";
+	if (question1 != null){
+		question1a = answerOrder[1][Integer.parseInt(question1)];
+	}
+	String question2a = "";
+	if (question2 != null){
+		question2a = answerOrder[2][Integer.parseInt(question2)];
+	}
+	String question3a = "";
+	if (question3 != null){
+		question3a = answerOrder[3][Integer.parseInt(question3)];
+	}
+	String question4a = "";
+	if (question4 != null){
+		question4a = answerOrder[4][Integer.parseInt(question4)];
+	}
+	String question5a = "";
+	if (question5 != null){
+		question5a = answerOrder[5][Integer.parseInt(question5)];
+	}
+	String question6a = "";
+	if (question6 != null){
+		question6a = answerOrder[6][Integer.parseInt(question6)];
+	}
+	String question7a = "";
+	if (question7 != null){
+		question7a = answerOrder[7][Integer.parseInt(question7)];
+	}
+	String question8a = "";
+	if (question8 != null){
+		question8a = answerOrder[8][Integer.parseInt(question8)];
+	}
+	String question9a = "";
+	if (question9 != null){
+		question9a = answerOrder[9][Integer.parseInt(question9)];
+	}
+
+	int score = 0;
+	
+	if (question0a == correctAnswerOrder[0]){
+		score = score + 1;
+	}
+	if (question1a == correctAnswerOrder[1]){
+		score = score + 1;
+	}
+	if (question2a == correctAnswerOrder[2]){
+		score = score + 1;
+	}
+	if (question3a == correctAnswerOrder[3]){
+		score = score + 1;
+	}
+	if (question4a == correctAnswerOrder[4]){
+		score = score + 1;
+	}
+	if (question5a == correctAnswerOrder[5]){
+		score = score + 1;
+	}
+	if (question6a == correctAnswerOrder[6]){
+		score = score + 1;
+	}
+	if (question7a == correctAnswerOrder[7]){
+		score = score + 1;
+	}
+	if (question8a == correctAnswerOrder[8]){
+		score = score + 1;
+	}
+	if (question9a == correctAnswerOrder[9]){
+		score = score + 1;
+	}
+%>
+	<p>Current Score : <%= score %>/10</p>
+	<div>Highest Score : 9/10</div>
 	<p> </p>
 	<p> </p>
 	</div>

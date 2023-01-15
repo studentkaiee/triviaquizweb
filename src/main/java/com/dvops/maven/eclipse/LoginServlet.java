@@ -58,7 +58,7 @@ public class LoginServlet extends HttpServlet {
 				PrintWriter print = response.getWriter();
 				print.println("<script type=\"text/javascript\">");
 				print.println("alert('You have successfully login!');"); // alert message
-				print.println("location='index.jsp';"); // redirect to home page
+				print.println("location='index.jsp?username="+username+"&password="+password+"&email="+rs.getString("email")+"';"); // redirect to home page
 				print.println("</script>");
 				
 			}else {

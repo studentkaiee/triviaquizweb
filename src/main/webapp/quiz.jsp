@@ -97,28 +97,68 @@ input[type="radio"] {
 <%@ page import="java.util.Collections" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.dvops.maven.eclipse.testSheet" %>
-<%! 
-	String[][] quizzes = {
-			{"question1", "answer1", "answer2", "answer3", "answer 4"},
-			{"question2", "answer1", "answer2", "answer3", "answer 4"},
-			{"question3", "answer1", "answer2", "answer3", "answer 4"},
-			{"question4", "answer1", "answer2", "answer3", "answer 4"},
-			{"question5", "answer1", "answer2", "answer3", "answer 4"},
-			{"question6", "answer1", "answer2", "answer3", "answer 4"},
-			{"question7", "answer1", "answer2", "answer3", "answer 4"},
-			{"question8", "answer1", "answer2", "answer3", "answer 4"},
-			{"question9", "answer1", "answer2", "answer3", "answer 4"},
-			{"question10", "answer1", "answer2", "answer3", "answer 4"},
-			{"question11", "answer1", "answer2", "answer3", "answer 4"},
-			{"question12", "answer1", "answer2", "answer3", "answer 4"},
-			{"question13", "answer1", "answer2", "answer3", "answer 4"},
-			{"question14", "answer1", "answer2", "answer3", "answer 4"},
-			{"question15", "answer1", "answer2", "answer3", "answer 4"},
-			{"question16", "answer1", "answer2", "answer3", "answer 4"},
-			{"question17", "answer1", "answer2", "answer3", "answer 4"},
-			{"question18", "answer1", "answer2", "answer3", "answer 4"}
-	}; 
+<%@ page import="java.io.PrintWriter" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.ResultSet" %>
+<%!
+String[][] quizzes = {
+		{"question1", "answer1", "answer2", "answer3", "answer 4"},
+		{"question2", "answer1", "answer2", "answer3", "answer 4"},
+		{"question3", "answer1", "answer2", "answer3", "answer 4"},
+		{"question4", "answer1", "answer2", "answer3", "answer 4"},
+		{"question5", "answer1", "answer2", "answer3", "answer 4"},
+		{"question6", "answer1", "answer2", "answer3", "answer 4"},
+		{"question7", "answer1", "answer2", "answer3", "answer 4"},
+		{"question8", "answer1", "answer2", "answer3", "answer 4"},
+		{"question9", "answer1", "answer2", "answer3", "answer 4"},
+		{"question10", "answer1", "answer2", "answer3", "answer 4"},
+		{"question11", "answer1", "answer2", "answer3", "answer 4"},
+		{"question12", "answer1", "answer2", "answer3", "answer 4"},
+		{"question13", "answer1", "answer2", "answer3", "answer 4"},
+		{"question14", "answer1", "answer2", "answer3", "answer 4"},
+		{"question15", "answer1", "answer2", "answer3", "answer 4"},
+		{"question16", "answer1", "answer2", "answer3", "answer 4"},
+		{"question17", "answer1", "answer2", "answer3", "answer 4"},
+		{"question18", "answer1", "answer2", "answer3", "answer 4"},
+		{"question19", "answer1", "answer2", "answer3", "answer 4"},
+		{"question20", "answer1", "answer2", "answer3", "answer 4"}
+}; 
+String[][] tem;
+int count = 0;
+%>
+<% 
+response.setContentType("text/html");
+String tester = "null";
 
+try {
+	Class.forName("com.mysql.jdbc.Driver");
+	Connection con = DriverManager.getConnection(
+	"jdbc:mysql://localhost:3306/questions", "root", "password");
+	
+	Statement  stm = con.createStatement();
+	ResultSet rs = stm.executeQuery("select * from questions");
+	while (rs.next()){
+		String question = rs.getString("question");
+		String answer = rs.getString("answer");
+		String wrong_answer1 = rs.getString("wrong_answer1");
+		String wrong_answer2 = rs.getString("wrong_answer2");
+		String wrong_answer3 = rs.getString("wrong_answer3");
+		quizzes[count][0] = question;
+		quizzes[count][1] = answer;
+		quizzes[count][2] = wrong_answer1;
+		quizzes[count][3] = wrong_answer2;
+		quizzes[count][4] = wrong_answer3;
+		count = count + 1;
+	}
+}catch(Exception e) {
+	tester = "error";
+}
+testSheet.allQuizSet(quizzes);
+%>
+
+<%
 	Random rand = new Random();{
 		for (int i = 0; i < quizzes.length; i++){
 			int randomIndexToSwap = rand.nextInt(quizzes.length);

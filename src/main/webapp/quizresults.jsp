@@ -74,6 +74,12 @@ body {
 <title>Trivia Quiz</title>
 </head>
 <body>
+<%@ page import="java.io.PrintWriter" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.sql.ResultSet" %>
 	<div class="topnav">
 		<a class="active" href="index.jsp">Home</a> <a href="#howtoplay">How
 			to play</a> <a href="#about">About</a>
@@ -180,9 +186,48 @@ body {
 	if (question9a == correctAnswerOrder[9]){
 		score = score + 1;
 	}
+	String username = "john";
+	//String username = request.getParameter("username");
+	String highest_score = "null";
+	response.setContentType("text/html");
+	
+	try {
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection con = DriverManager.getConnection(
+		"jdbc:mysql://localhost:3306/user", "root", "password");
+		
+		Statement  stm = con.createStatement();
+		ResultSet rs = stm.executeQuery("select * from user where username='"+username+"'");
+		if(rs.next()) {
+			highest_score=rs.getString("highest_score");
+			
+		}
+	}catch(Exception e) {
+		PrintWriter print = response.getWriter();
+		print.println("<script type=\"text/javascript\">");
+		print.println("alert('error');"); // alert message
+		print.println("</script>");
+	}
+		
+	if (score > Integer.parseInt(highest_score)){
+			try {
+				
+				Class.forName("com.mysql.jdbc.Driver");
+				Connection con = DriverManager.getConnection(
+				"jdbc:mysql://localhost:3306/user", "root", "password");
+				PreparedStatement statement = con.prepareStatement("UPDATE user SET highest_score = '"+score+"' WHERE user.username = '"+username+"'"); 
+
+			
+		}catch(Exception e) {
+			PrintWriter print = response.getWriter();
+			print.println("<script type=\"text/javascript\">");
+			print.println("alert('error');"); // alert message
+			print.println("</script>");
+		}
+	}
 %>
 	<p>Current Score : <%= score %>/10</p>
-	<div>Highest Score : 9/10</div>
+	<div>Highest Score : <%= highest_score %>/10</div>
 	<p> </p>
 	<p> </p>
 	</div>

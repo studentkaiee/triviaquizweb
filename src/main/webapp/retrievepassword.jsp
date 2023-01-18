@@ -35,14 +35,50 @@ footer {
   padding: 3px;
   color: black;
 }
-</style> 
-<title>Trivia Quiz</title>
+</style>
+<title>Trivia Quiz</title> 
 </head>
-<% 
-String username = request.getParameter("username");
-String email = request.getParameter("email");
-%>
 <body>
+<%@ page import="java.io.PrintWriter" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.sql.ResultSet" %>
+<%
+
+String username = request.getParameter("username");
+String password = "Null";
+String email = request.getParameter("email");
+response.setContentType("text/html");
+
+int flag = 0;
+
+try {
+	Class.forName("com.mysql.jdbc.Driver");
+	Connection con = DriverManager.getConnection(
+	"jdbc:mysql://localhost:3306/user", "root", "password");
+	
+	Statement  stm = con.createStatement();
+	ResultSet rs = stm.executeQuery("select * from user where username='"+username+"' and email='"+email+"'");
+	if(rs.next()) {
+		password=rs.getString("password");
+		flag = 1;
+	}else{
+		flag = 0;
+	}
+}catch(Exception e) {
+	PrintWriter print = response.getWriter();
+	print.println("<script type=\"text/javascript\">");
+	print.println("alert('error');"); // alert message
+	print.println("</script>");
+}
+
+
+
+	
+	
+%>
 <div class="topnav">
   <a class="active" href="login.jsp">Home</a>
   <a href="#howtoplay">How to play</a>
@@ -54,20 +90,25 @@ String email = request.getParameter("email");
 	
 	<div class="column">
 	<div style="height: 220px;"></div>
+	
 	<!-- Login Form Panel Start -->
-	<div>Forget Password Form</div>
+	<div>Forget Password</div>
 	<div style="height: 20px;"></div>
-	<form action="retrievepassword.jsp?username=<%= username %>&email=<%= email %>">
+	<form action ="passwordreset.jsp">
 	<div class="column">
-		Username:
 		<div style="height: 2px;"></div>
-		<input type="text" name="username" size="25">
+		<div>Current Password : <%= password %></div>
 		<div style="height: 5px;"></div>
-		Email:
+		<br>
+		New Password:
+		<br>
+		
 		<div style="height: 2px;"></div>
-		<input type="text" name="email" size="25">
+		<input type="text" name="password" size="25">
 		<div style="height: 10px;"></div>
 		<input type="submit" value="ForgetPassword"/>
+		<input type="hidden" name="username" value="<%= username %>">
+		<input type="hidden" name="flag" value="<%=flag %>">
 	</div>
 	</form>
 	<!-- Login Form Panel End -->
@@ -78,5 +119,10 @@ String email = request.getParameter("email");
 <!-- distance between login form and footer -->
 <div style="height: 200px"></div>
 
+<footer>
+  <p><a class="active" href="login.jsp">Home</a> | 
+  <a href="#howtoplay">How to play</a> | 
+  <a href="#about">About</a></p>
+</footer>
 </body>
 </html>

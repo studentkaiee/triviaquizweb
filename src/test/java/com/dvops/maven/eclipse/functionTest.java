@@ -18,7 +18,7 @@ class functionTest {
 
 	@Test
 	void testMarking() {
-		//correct user_answers and correct_answers
+		//correct user_answers and correct_answer
 		String[] user_answers = {"3","1","2","4","5"};
 		String[] correct_answers = {"3","1","2","4","5"};
 		Marking(user_answers,correct_answers);

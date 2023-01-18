@@ -80,6 +80,48 @@ body {
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.ResultSet" %>
+<% 
+String username = request.getParameter("username");
+String password = request.getParameter("password");
+String email = request.getParameter("email");
+
+if (username == null || password == null || email == null){
+	PrintWriter print = response.getWriter();
+	print.println("<script type=\"text/javascript\">");
+	print.println("alert('Login Required');"); // alert message
+	print.println("location='login.jsp';"); // redirect to login page
+	print.println("</script>");
+}
+
+
+response.setContentType("text/html");
+
+try {
+	Class.forName("com.mysql.jdbc.Driver");
+	Connection con = DriverManager.getConnection(
+	"jdbc:mysql://localhost:3306/user", "root", "password");
+	
+	Statement  stm = con.createStatement();
+	ResultSet rs = stm.executeQuery("select * from user where username='"+username+"' and password='"+password+"' and email='"+email+"'");
+	if(rs.next()) {
+
+	}else {
+		PrintWriter print = response.getWriter();
+		print.println("<script type=\"text/javascript\">");
+		print.println("alert('Login Required');"); // alert message
+		print.println("location='login.jsp';"); // redirect to login page
+		print.println("</script>");
+	}
+}catch(Exception e) {
+	PrintWriter print = response.getWriter();
+	print.println("<script type=\"text/javascript\">");
+	print.println("alert('error');"); // alert message
+	print.println("</script>");
+}
+
+
+%>
+
 	<div class="topnav">
 		<a class="active" href="index.jsp">Home</a> <a href="#howtoplay">How
 			to play</a> <a href="#about">About</a>
@@ -186,8 +228,7 @@ body {
 	if (question9a == correctAnswerOrder[9]){
 		score = score + 1;
 	}
-	String username = "john";
-	//String username = request.getParameter("username");
+	
 	String highest_score = "null";
 	response.setContentType("text/html");
 	
@@ -216,8 +257,8 @@ body {
 				Connection con = DriverManager.getConnection(
 				"jdbc:mysql://localhost:3306/user", "root", "password");
 				PreparedStatement statement = con.prepareStatement("UPDATE user SET highest_score = '"+score+"' WHERE user.username = '"+username+"'"); 
+				int i = statement.executeUpdate();
 
-			
 		}catch(Exception e) {
 			PrintWriter print = response.getWriter();
 			print.println("<script type=\"text/javascript\">");
@@ -234,7 +275,7 @@ body {
 	<div style="background-color: black; height:2px; width:100000px"></div>
 	<div class="About-us">
 	<div>
-	<p><a href="index.jsp" class="butt">Return</a></p>
+	<p><a href="index.jsp?username=<%= username %>&password=<%= password %>&email=<%= email %>" class="butt">Return</a></p>
 	</div>
 
 
@@ -246,11 +287,5 @@ body {
 	<!-- distance between login form and footer -->
 	<div style="height: 200px"></div>
 
-	<footer>
-		<p>
-			<a class="active" href="index.jsp">Home</a> | <a href="#howtoplay">How
-				to play</a> | <a href="#about">About</a>
-		</p>
-	</footer>
 </body>
 </html>

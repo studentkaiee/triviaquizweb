@@ -39,10 +39,54 @@ footer {
 <title>Trivia Quiz</title>
 </head>
 <body>
+<%@ page import="java.io.PrintWriter" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.ResultSet" %>
+<%
+String username = request.getParameter("username");
+String password = request.getParameter("password");
+String email = request.getParameter("email");
+
+if (username == null || password == null || email == null){
+	PrintWriter print = response.getWriter();
+	print.println("<script type=\"text/javascript\">");
+	print.println("alert('Login Required');"); // alert message
+	print.println("location='login.jsp';"); // redirect to login page
+	print.println("</script>");
+}
+
+
+response.setContentType("text/html");
+
+try {
+	Class.forName("com.mysql.jdbc.Driver");
+	Connection con = DriverManager.getConnection(
+	"jdbc:mysql://localhost:3306/user", "root", "password");
+	
+	Statement  stm = con.createStatement();
+	ResultSet rs = stm.executeQuery("select * from user where username='"+username+"' and password='"+password+"' and email='"+email+"'");
+	if(rs.next()) {
+		
+	}else {
+		PrintWriter print = response.getWriter();
+		print.println("<script type=\"text/javascript\">");
+		print.println("alert('Login Required');"); // alert message
+		print.println("location='login.jsp';"); // redirect to login page
+		print.println("</script>");
+	}
+}catch(Exception e) {
+	PrintWriter print = response.getWriter();
+	print.println("<script type=\"text/javascript\">");
+	print.println("alert('error');"); // alert message
+	print.println("</script>");
+}
+%>
 <div class="topnav">
-  <a href="index.jsp">Home</a>
-  <a href="howtoplay.jsp">How to play</a>
-  <a class="active" href="about.jsp">About</a>
+  <a href="index.jsp?username=<%= username %>&password=<%= password %>&email=<%= email %>">Home</a>
+  <a href="howtoplay.jsp?username=<%= username %>&password=<%= password %>&email=<%= email %>">How to play</a>
+  <a class="active" href="about.jsp?username=<%= username %>&password=<%= password %>&email=<%= email %>">About</a>
 </div>
 
 <div class="row">
@@ -70,10 +114,5 @@ footer {
 <!-- distance between login form and footer -->
 <div style="height: 200px"></div>
 
-<footer>
-  <p><a class="active" href="index.jsp">Home</a> | 
-  <a href="howtoplay.jsp">How to play</a> | 
-  <a href="about.jsp">About</a></p>
-</footer>
 </body>
 </html>

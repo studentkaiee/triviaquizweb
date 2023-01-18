@@ -77,10 +77,5 @@ text-align: center;
 </div>
 <div style="height: 200px"></div>
 
-<footer>
-  <p><a class="active" href="login.jsp">Home</a> | 
-  <a href="#howtoplay">How to play</a> | 
-  <a href="#about">About</a></p>
-</footer>
 </body>
 </html>

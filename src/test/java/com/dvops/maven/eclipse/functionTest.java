@@ -17,8 +17,17 @@ class functionTest {
 	}
 
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	void testMarking() {
+		//correct user_answers and correct_answers
+		String[] user_answers = {"3","1","2","4","5"};
+		String[] correct_answers = {"3","1","2","4","5"};
+		Marking(user_answers,correct_answers);
+		assertEquals(true);
+		//incorrect correct_answers
+		String[] user_answers = {"3","1","2","4","5"};
+		String[] correct_answers = {"3","2","2","4","5"};
+		Marking(user_answers,correct_answers);
+		assertEquals(false);
 	}
 
 }

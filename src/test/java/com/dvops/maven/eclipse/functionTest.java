@@ -17,8 +17,83 @@ class functionTest {
 	}
 
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	void testLogin() {
+		//Correct username and password
+		String username = 'admin';
+		String password = 'password123';
+		Login(username, password);
+		assertEquals(true);
+		//Incorrect password
+		String username = 'admin';
+		String password = 'password12';
+		Login(username, password);
+		assertEquals(false);
+		//Incorrect username
+		String username = 'admi';
+		String password = 'password123';
+		Login(username, password);
+		assertEquals(false);
+		//Incorrect username and password
+		String username = 'admi';
+		String password = 'password12';
+		Login(username, password);
+		assertEquals(false);
+	}
+	
+	@Test
+	void testShowPassword() {
+		//Valid username
+		String username = 'admin';
+		showPassword(username);
+		assertEquals('password123');
+		//Invalid username
+		String username = 'abc';
+		showPassword(username);
+		assertEquals(null);
+	}
+	
+	@Test
+	void testUpdatePassword() {
+		//Valid username and true flag
+		String username = 'admin';
+		String newpassword = 'password987';
+		Boolean flag = true;
+		updatePassword(username, newpassword, flag);
+		assertEquals(true);
+		//Invalid username
+		String username = 'abc';
+		String newpassword = 'password987';
+		Boolean flag = true;
+		updatePassword(username, newpassword, flag);
+		assertEquals(false);
+		//False flag
+		String username = 'admin';
+		String newpassword = 'password987';
+		Boolean flag = false;
+		updatePassword(username, newpassword, flag);
+		assertEquals(false);
+	}
+	
+	@Test
+	void testUpdateHighScore() {
+		//Valid username and new highscore
+		String username = 'admin';
+		Int highest_score = 17;
+		Int gotten_score = 20;
+		updateHighScore(username, highest_score, gotten_score);
+		assertEquals(highest_score, 20);
+		//Valid username and no new highscore
+		String username = 'admin';
+		Int highest_score = 17;
+		Int gotten_score = 10;
+		updateHighScore(username, highest_score, gotten_score);
+		assertEquals(highest_score, 17);
+		//Invalid username
+		String username = 'abc';
+		Int highest_score = 17;
+		Int gotten_score = 20;
+		updateHighScore(username, highest_score, gotten_score);
+		assertEquals(null);
 	}
 
 }

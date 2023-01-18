@@ -77,10 +77,5 @@ text-align: center;
 <!-- distance between login form and footer -->
 <div style="height: 200px"></div>
 
-<footer>
-  <p><a class="active" href="#home">Home</a> | 
-  <a href="#howtoplay">How to play</a> | 
-  <a href="#about">About</a></p>
-</footer>
 </body>
 </html>

@@ -93,10 +93,6 @@ try {
 	Statement  stm = con.createStatement();
 	ResultSet rs = stm.executeQuery("select * from user where username='"+username+"' and password='"+password+"' and email='"+email+"'");
 	if(rs.next()) {
-		PrintWriter print = response.getWriter();
-		print.println("<script type=\"text/javascript\">");
-		print.println("alert('Welcome back');"); // alert message
-		print.println("</script>");
 		score = rs.getString("highest_score");
 
 	}else {
@@ -116,9 +112,9 @@ try {
 
 %>
 <div class="topnav">
-  <a class="active" href="index.jsp">Home</a>
-  <a href="howtoplay.jsp">How to play</a>
-  <a href="about.jsp">About</a>
+  <a class="active" href="index.jsp?username=<%= username %>&password=<%= password %>&email=<%= email %>">Home</a>
+  <a href="howtoplay.jsp?username=<%= username %>&password=<%= password %>&email=<%= email %>">How to play</a>
+  <a href="about.jsp?username=<%= username %>&password=<%= password %>&email=<%= email %>">About</a>
 </div>
 
 <div class="column">
@@ -135,8 +131,8 @@ try {
 <div style="width: 130px"></div>
 
 <div>
-<p><a href="quiz.jsp" class="butt">Start Quiz</a></p>
-<p><a href="howtoplay.jsp" class="butt">How to Play</a></p>
+<p><a href="quiz.jsp?username=<%= username %>&password=<%= password %>&email=<%= email %>" class="butt">Start Quiz</a></p>
+<p><a href="howtoplay.jsp?username=<%= username %>&password=<%= password %>&email=<%= email %>" class="butt">How to Play</a></p>
 </div>
 
 </div>
@@ -145,11 +141,6 @@ try {
 <!-- distance between login form and footer -->
 <div style="height: 200px"></div>
 
-<footer>
-  <p><a class="active" href="#home">Home</a> | 
-  <a href="howtoplay.jsp">How to play</a> | 
-  <a href="about.jsp">About</a></p>
- </footer>
 
 </body>
 </html>

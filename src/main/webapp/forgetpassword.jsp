@@ -35,7 +35,7 @@ footer {
   padding: 3px;
   color: black;
 }
-</style>
+</style> 
 <title>Trivia Quiz</title>
 </head>
 <% 

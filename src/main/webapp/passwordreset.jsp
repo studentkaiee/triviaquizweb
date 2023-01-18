@@ -41,6 +41,6 @@ if(flag > 0){
 Successfully Resetted 
 <form action="login.jsp">
 		<input type="submit" value="Click here">
-	</form>
+	</form> 
 </body>
 </html>

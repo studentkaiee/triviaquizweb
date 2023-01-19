@@ -17,6 +17,20 @@ class functionTest {
 	}
 
 	@Test
+
+	void testMarking() {
+		//correct user_answers and correct_answers
+		String[] user_answers = {"3","1","2","4","5"};
+		String[] correct_answers = {"3","1","2","4","5"};
+		Marking(user_answers,correct_answers);
+		assertEquals(true);
+		//incorrect correct_answers
+		String[] user_answers = {"3","1","2","4","5"};
+		String[] correct_answers = {"3","2","2","4","5"};
+		Marking(user_answers,correct_answers);
+		assertEquals(false);
+    }
+
 	void testLogin() {
 		//Correct username and password
 		String username = 'admin';
@@ -94,6 +108,7 @@ class functionTest {
 		Int gotten_score = 20;
 		updateHighScore(username, highest_score, gotten_score);
 		assertEquals(null);
+
 	}
 
 }

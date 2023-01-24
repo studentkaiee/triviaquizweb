@@ -30,7 +30,7 @@ class functionTest {
 		Marking(user_answers,correct_answers);
 		assertEquals(false);
     }
-
+	@Test
 	void testLogin() {
 		//Correct username and password
 		String username = 'admin';
@@ -86,6 +86,68 @@ class functionTest {
 		Boolean flag = false;
 		updatePassword(username, newpassword, flag);
 		assertEquals(false);
+	}
+	@Test
+	void testForgetPassword() {
+		//valid username and email
+		String username = 'admin';
+		String email = 'admin@gmail.com';
+		forgetPassword(username, email);
+		assertEquals(true);
+		//invalid username 
+		String username = 'admin123';
+		String email = 'admin@gmail.com';
+		forgetPassword(username, email);
+		assertEquals(false);
+		//invalid email
+		String username = 'admin';
+		String email = 'admin123@gmail.com';
+		forgetPassword(username, email);
+		assertEquals(false);
+	}
+	@Test
+	void testGetHighest() {
+		//valid username
+		String username = 'admin';
+		getHighest(username);
+		assertEquals(true);
+		//invalid username
+		String username = 'admin123';
+		getHighest(username);
+		assertEquals(false);
+	}
+	@Test
+	void testIsUserLoggedIn() {
+		//valid username, email and password 
+		String username = 'admin';
+		String email = 'admin@gmail.com';
+		String password = 'password';
+		IsUserLoggedIn(username, email, password);
+		assertEquals(true);
+		//invalid username
+		String username = 'admin123';
+		String email = 'admin@gmail.com';
+		String password = 'password';
+		IsUserLoggedIn(username, email, password);
+		assertEquals(false);
+		//invalid email
+		String username = 'admin';
+		String email = 'admin123@gmail.com';
+		String password = 'password';
+		IsUserLoggedIn(username, email, password);
+		assertEquals(false);
+		//invalid password
+		String username = 'admin';
+		String email = 'admin@gmail.com';
+		String password = 'password123';
+		IsUserLoggedIn(username, email, password);
+		assertEquals(false);
+		//user not logged in
+		String username = null ;
+		String email = null ;
+		String password = null ;
+		IsUserLoggedIn(username, email, password);
+		assertEquals(null);
 	}
 	
 	@Test

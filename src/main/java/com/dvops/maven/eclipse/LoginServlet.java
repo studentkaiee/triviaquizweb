@@ -13,6 +13,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import com.dvops.maven.eclipse.function;
 
 /**
  * Servlet implementation class LoginServlet
@@ -47,19 +48,15 @@ public class LoginServlet extends HttpServlet {
 		
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
+		String email = function.getemail(username);
+		boolean login = true;
+		login = function.login(username, password);
 		
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection(
-			"jdbc:mysql://localhost:3306/user", "root", "password");
-			
-			Statement  stm = con.createStatement();
-			ResultSet rs = stm.executeQuery("select * from user where username='"+username+"' and password='"+password+"'");
-			if(rs.next()) {
+			if(login == true) {
 				PrintWriter print = response.getWriter();
 				print.println("<script type=\"text/javascript\">");
 				print.println("alert('You have successfully login!');"); // alert message
-				print.println("location='index.jsp?username="+username+"&password="+password+"&email="+rs.getString("email")+"';"); // redirect to home page
+				print.println("location='index.jsp?username="+username+"&password="+password+"&email="+email+"';"); // redirect to home page
 				print.println("</script>");
 				
 			}else {
@@ -70,11 +67,9 @@ public class LoginServlet extends HttpServlet {
 				print.println("location='login.jsp';");
 				print.println("</script>");
 			}
-		}catch(Exception e) {
-			System.out.println(e.getMessage());
 		}
 		
 
 	}
 
-}
+

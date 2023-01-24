@@ -45,35 +45,22 @@ footer {
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.ResultSet" %>
+<%@ page import="com.dvops.maven.eclipse.function" %>
 <%
 
 String username = request.getParameter("username");
-String password = "Null";
+String password = function.showPassword(username);
 String email = request.getParameter("email");
 response.setContentType("text/html");
-
+boolean forgetpassword = true;
 int flag = 0;
 
-try {
-	Class.forName("com.mysql.jdbc.Driver");
-	Connection con = DriverManager.getConnection(
-	"jdbc:mysql://localhost:3306/user", "root", "password");
-	
-	Statement  stm = con.createStatement();
-	ResultSet rs = stm.executeQuery("select * from user where username='"+username+"' and email='"+email+"'");
-	if(rs.next()) {
-		password=rs.getString("password");
+forgetpassword = function.forgetPassword(username, email);
+	if(forgetpassword == true) {
 		flag = 1;
 	}else{
 		flag = 0;
 	}
-}catch(Exception e) {
-	PrintWriter print = response.getWriter();
-	print.println("<script type=\"text/javascript\">");
-	print.println("alert('error');"); // alert message
-	print.println("</script>");
-}
-
 
 
 	

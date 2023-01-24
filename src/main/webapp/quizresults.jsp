@@ -80,6 +80,7 @@ body {
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.ResultSet" %>
+<%@ page import="com.dvops.maven.eclipse.function" %>
 <% 
 String username = request.getParameter("username");
 String password = request.getParameter("password");
@@ -229,26 +230,9 @@ try {
 		score = score + 1;
 	}
 	
-	String highest_score = "null";
+	String highest_score = function.getHighest(username);
 	response.setContentType("text/html");
 	
-	try {
-		Class.forName("com.mysql.jdbc.Driver");
-		Connection con = DriverManager.getConnection(
-		"jdbc:mysql://localhost:3306/user", "root", "password");
-		
-		Statement  stm = con.createStatement();
-		ResultSet rs = stm.executeQuery("select * from user where username='"+username+"'");
-		if(rs.next()) {
-			highest_score=rs.getString("highest_score");
-			
-		}
-	}catch(Exception e) {
-		PrintWriter print = response.getWriter();
-		print.println("<script type=\"text/javascript\">");
-		print.println("alert('error');"); // alert message
-		print.println("</script>");
-	}
 		
 	if (score > Integer.parseInt(highest_score)){
 			try {

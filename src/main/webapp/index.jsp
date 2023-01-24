@@ -68,44 +68,24 @@ footer {
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.ResultSet" %>
+<%@ page import="com.dvops.maven.eclipse.function" %>
 <% 
-String username = request.getParameter("username");
+String username = request.getParameter("username"); 
 String password = request.getParameter("password");
 String email = request.getParameter("email");
-String score = "0";
+String score = function.getHighest(username);
 
-if (username == null || password == null || email == null){
+boolean isUserLoggedIn = false;
+
+isUserLoggedIn = function.isUserLoggedIn(username, password, email);
+
+
+
+if (isUserLoggedIn == false){
 	PrintWriter print = response.getWriter();
 	print.println("<script type=\"text/javascript\">");
 	print.println("alert('Login Required');"); // alert message
 	print.println("location='login.jsp';"); // redirect to login page
-	print.println("</script>");
-}
-
-
-response.setContentType("text/html");
-
-try {
-	Class.forName("com.mysql.jdbc.Driver");
-	Connection con = DriverManager.getConnection(
-	"jdbc:mysql://localhost:3306/user", "root", "password");
-	
-	Statement  stm = con.createStatement();
-	ResultSet rs = stm.executeQuery("select * from user where username='"+username+"' and password='"+password+"' and email='"+email+"'");
-	if(rs.next()) {
-		score = rs.getString("highest_score");
-
-	}else {
-		PrintWriter print = response.getWriter();
-		print.println("<script type=\"text/javascript\">");
-		print.println("alert('Login Required');"); // alert message
-		print.println("location='login.jsp';"); // redirect to login page
-		print.println("</script>");
-	}
-}catch(Exception e) {
-	PrintWriter print = response.getWriter();
-	print.println("<script type=\"text/javascript\">");
-	print.println("alert('error');"); // alert message
 	print.println("</script>");
 }
 

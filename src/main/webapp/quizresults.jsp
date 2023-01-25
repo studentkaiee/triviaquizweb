@@ -86,41 +86,17 @@ String username = request.getParameter("username");
 String password = request.getParameter("password");
 String email = request.getParameter("email");
 
-if (username == null || password == null || email == null){
+boolean isUserLoggedIn = false;
+
+isUserLoggedIn = function.isUserLoggedIn(username, password, email);
+
+if (isUserLoggedIn == false){
 	PrintWriter print = response.getWriter();
 	print.println("<script type=\"text/javascript\">");
 	print.println("alert('Login Required');"); // alert message
 	print.println("location='login.jsp';"); // redirect to login page
 	print.println("</script>");
 }
-
-
-response.setContentType("text/html");
-
-try {
-	Class.forName("com.mysql.jdbc.Driver");
-	Connection con = DriverManager.getConnection(
-	"jdbc:mysql://localhost:3306/user", "root", "password");
-	
-	Statement  stm = con.createStatement();
-	ResultSet rs = stm.executeQuery("select * from user where username='"+username+"' and password='"+password+"' and email='"+email+"'");
-	if(rs.next()) {
-
-	}else {
-		PrintWriter print = response.getWriter();
-		print.println("<script type=\"text/javascript\">");
-		print.println("alert('Login Required');"); // alert message
-		print.println("location='login.jsp';"); // redirect to login page
-		print.println("</script>");
-	}
-}catch(Exception e) {
-	PrintWriter print = response.getWriter();
-	print.println("<script type=\"text/javascript\">");
-	print.println("alert('error');"); // alert message
-	print.println("</script>");
-}
-
-
 %>
 
 	<div class="topnav">
@@ -197,59 +173,13 @@ try {
 		question9a = answerOrder[9][Integer.parseInt(question9)];
 	}
 
-	int score = 0;
-	
-	if (question0a == correctAnswerOrder[0]){
-		score = score + 1;
-	}
-	if (question1a == correctAnswerOrder[1]){
-		score = score + 1;
-	}
-	if (question2a == correctAnswerOrder[2]){
-		score = score + 1;
-	}
-	if (question3a == correctAnswerOrder[3]){
-		score = score + 1;
-	}
-	if (question4a == correctAnswerOrder[4]){
-		score = score + 1;
-	}
-	if (question5a == correctAnswerOrder[5]){
-		score = score + 1;
-	}
-	if (question6a == correctAnswerOrder[6]){
-		score = score + 1;
-	}
-	if (question7a == correctAnswerOrder[7]){
-		score = score + 1;
-	}
-	if (question8a == correctAnswerOrder[8]){
-		score = score + 1;
-	}
-	if (question9a == correctAnswerOrder[9]){
-		score = score + 1;
-	}
+	String[] user_answers = {question0a,question1a,question2a,question3a,question4a,question5a,question6a,question7a,question8a,question9a};
+	int score = function.marking(user_answers, correctAnswerOrder);
 	
 	String highest_score = function.getHighest(username);
 	response.setContentType("text/html");
-	
 		
-	if (score > Integer.parseInt(highest_score)){
-			try {
-				
-				Class.forName("com.mysql.jdbc.Driver");
-				Connection con = DriverManager.getConnection(
-				"jdbc:mysql://localhost:3306/user", "root", "password");
-				PreparedStatement statement = con.prepareStatement("UPDATE user SET highest_score = '"+score+"' WHERE user.username = '"+username+"'"); 
-				int i = statement.executeUpdate();
-
-		}catch(Exception e) {
-			PrintWriter print = response.getWriter();
-			print.println("<script type=\"text/javascript\">");
-			print.println("alert('error');"); // alert message
-			print.println("</script>");
-		}
-	}
+	function.updateHighScore(username, Integer.parseInt(highest_score), score);
 %>
 	<p>Current Score : <%= score %>/10</p>
 	<div>Highest Score : <%= highest_score %>/10</div>

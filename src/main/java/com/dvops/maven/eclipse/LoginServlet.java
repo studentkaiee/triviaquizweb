@@ -48,7 +48,7 @@ public class LoginServlet extends HttpServlet {
 		
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		String email = function.getemail(username);
+		String email = function.getEmail(username);
 		boolean login = true;
 		login = function.login(username, password);
 		

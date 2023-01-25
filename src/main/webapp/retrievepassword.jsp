@@ -52,7 +52,7 @@ String username = request.getParameter("username");
 String password = function.showPassword(username);
 String email = request.getParameter("email");
 response.setContentType("text/html");
-boolean forgetpassword = true;
+boolean forgetpassword = false;
 int flag = 0;
 
 forgetpassword = function.forgetPassword(username, email);
@@ -62,7 +62,13 @@ forgetpassword = function.forgetPassword(username, email);
 		flag = 0;
 	}
 
-
+if (function.isUserLoggedIn(username, password, email) == false){
+	PrintWriter print = response.getWriter();
+	print.println("<script type=\"text/javascript\">");
+	print.println("alert('invalid credentials');"); // alert message
+	print.println("location='forgetpassword.jsp';"); // redirect to login page
+	print.println("</script>");
+}
 	
 	
 %>

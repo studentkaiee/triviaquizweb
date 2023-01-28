@@ -40,7 +40,7 @@ text-align: center;
 </head>
 <body>
 <div class="topnav">
-  <a class="active" href="#index">Home</a>
+  <a class="active" href="#index">Loserssssssss</a>
   <a href="#howtoplay">How to play</a>
   <a href="#about">About</a>
 </div>

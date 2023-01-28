@@ -33,7 +33,7 @@
 footer {
   text-align: center;
   padding: 3px;
-  color: black; 
+  color: black;
 }
 .butt {
 	box-shadow:inset 0px 1px 0px 0px #fce2c1;

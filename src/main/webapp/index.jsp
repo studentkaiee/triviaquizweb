@@ -60,7 +60,7 @@ footer {
 	top:1px;
 }
 </style>
-<title>Insert title here</title>
+<title>Trivia Quiz</title>
 </head>
 <body>
 <%@ page import="java.io.PrintWriter" %>
@@ -105,7 +105,7 @@ if (isUserLoggedIn == false){
 <div>Logged in as: <%= username %></div>
 <div>Highest Score: <%= score %>/10</div>
 <!-- redirects to login page -->
-<button onclick="window.location='login.jsp'">Log Out</button>
+<button id="logoutButton" onclick="window.location='login.jsp'">Log Out</button>
 </div>
 
 <div style="width: 130px"></div>

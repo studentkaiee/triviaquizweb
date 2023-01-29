@@ -67,7 +67,7 @@ String email = request.getParameter("email");
 		<div style="height: 2px;"></div>
 		<input type="text" name="email" size="25">
 		<div style="height: 10px;"></div>
-		<input type="submit" value="ForgetPassword"/>
+		<input id="retrievepassword" type="submit" value="ForgetPassword"/>
 	</div>
 	</form>
 	<!-- Login Form Panel End -->

@@ -58,13 +58,13 @@ text-align: center;
 	<div class="column">
 		username:
 		<div style="height: 2px;"></div>
-		<input type="text" name="username" size="20">
+		<input id="username" type="text" name="username" size="20">
 		<div style="height: 5px;"></div>
 		password:
 		<div style="height: 2px;"></div>
-		<input type="password" name="password" size="20">
+		<input id="password" type="password" name="password" size="20">
 		<div style="height: 10px;"></div>
-		<input type="submit" value="Login"/>
+		<input id="loginButton" type="submit" value="Login"/>
 	</div>
 	</form>
 		<p>Don't Have an Account? <a href="register.jsp">Register Here</a></p>

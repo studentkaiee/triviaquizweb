@@ -82,7 +82,7 @@ if (isUserLoggedIn == false){
 	<p>Simple Trivia Quiz For All Ages</p>
 	<hr>
 	<p>Created by 4 Polytechnic Students. Made for users to play engaging quiz based-games and challenge themselves in different topics such as sports, music and movies. Trivia Quiz will rotate weekly in batches of 4 types with varying topics and will be designed by us.</p>
-	<p>Users will be able to compete with one another through total scores that will be published at the end of the week.Included Technologies from the CICD pipeline into this webapp</p>
+	<p>Users will be able to compete with one another through total scores that will be published at the end of the week.Included Technologies from the CICD pipeline into this web app</p>
 	
 
   </div>

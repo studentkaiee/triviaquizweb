@@ -36,7 +36,7 @@ text-align: center;
   color: black;
 }
 </style>
-<title>Trivia Quiz Web</title>
+<title>Trivia Quiz Webs</title>
 </head>
 <body>
 <div class="topnav">
